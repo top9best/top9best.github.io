@@ -1,0 +1,18 @@
+<svg width="512" height="512"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:svg="http://www.w3.org/2000/svg">
+    <!-- Created with SVG-edit - http://svg-edit.googlecode.com/ -->
+    <g>
+        <rect id="svg_1" height="170" width="170" y="0" x="0" stroke-width="8" stroke="#222" fill="#f72585"/>
+        <rect id="svg_3" height="170" width="170" y="0" x="171" stroke-width="8" stroke="#222" fill="#b5179e"/>
+        <rect id="svg_2" height="170" width="170" y="341" x="341" stroke-width="8" stroke="#222" fill="#4895ef"/>
+        <rect id="svg_5" height="170" width="170" y="171" x="171" stroke-width="8" stroke="#222" fill="#480ca8"/>
+        <rect id="svg_8" height="170" width="170" y="341" x="171" stroke-width="8" stroke="#222" fill="#4361ee"/>
+        <rect id="svg_4" height="170" width="170" y="171" x="0" stroke-width="8" stroke="#222" fill="#560bad"/>
+        <rect id="svg_7" height="170" width="170" y="171" x="341" stroke-width="8" stroke="#222" fill="#3a0ca3"/>
+        <rect id="svg_6" height="170" width="170" y="0" x="341" stroke-width="8" stroke="#222" fill="#7209b7"/>
+        <rect id="svg_9" height="170" width="170" y="341" x="0" stroke-width="8" stroke="#222" fill="#3f37c9"/>
+        <ellipse stroke-width="16" fill-opacity="0" ry="120" rx="120" id="svg_11" cy="166" cx="257" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke="#fff" fill="#fff"/>
+        <line id="svg_13" y2="464" x2="238" y1="211" x1="369" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="16" stroke="#fff" fill="none"/>
+    </g>
+</svg>
