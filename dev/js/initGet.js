@@ -6,13 +6,19 @@ function initGet () {
   var id = getQueryString('id');
   var counter = 60 / 5;
 
-  setTimeout(function () {
+  recaptcha.onload = function () {
     grecaptcha.ready(function () {
       grecaptcha.execute('6LcwTPMZAAAAAIEoRQ2fm2cVMWWfvpeUJQX_CgcZ', { action: 'submit' }).then(function (token) {
         polling(token);
       });
     });
-  }, 1800);
+  };
+
+  recaptcha.onerror = function () {
+    popupDialog.show(function (dom) {
+      dom.querySelector('.popup_content').innerHTML = 'Some error occurred, please try latter';
+    });
+  };
 
   function polling (token) {
     ajax({
@@ -23,7 +29,7 @@ function initGet () {
       response: 'json',
       success: function (res) {
         if (res.code == 0) {
-          location.href = host + '/id/' + id;
+          location.href = host + '/id.html?id=' + id;
         } else {
           counter--;
           if (counter > 0) {

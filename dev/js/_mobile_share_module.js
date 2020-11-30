@@ -10,7 +10,6 @@ function mobile_share_module (url, option) {
         console.error('url is require');
         return;
     }
-    console.log(option);
     var iconLine = (option && option.iconLine) ? option.iconLine : '',
         iconLine2x = (option && option.iconLine2x) ? option.iconLine2x : '',
         iconFacebook = (option && option.iconFacebook) ? option.iconFacebook : '',

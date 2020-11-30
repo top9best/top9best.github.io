@@ -191,9 +191,10 @@ function submitCrawler () {
           },
           response: 'json',
           success: function (res) {
-            console.log(res);
             if (res.code == 0 || res.code == 1) {
               _this.submit();
+            } else {
+              errorCode(res.code);
             }
           },
           error: function (status, res) {

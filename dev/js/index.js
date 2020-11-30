@@ -15,12 +15,12 @@ switch (router) {
   case '/get.html':
     initGet();
     break;
+  case '/id':
+  case '/id.html':
+    initId();
+    break;
   default:
-    if (router.indexOf('/id/') != -1) {
-      initId();
-    } else {
-      location.href = '/404.html';
-    }
+    location.href = '/404.html';
     break;
 }
 
