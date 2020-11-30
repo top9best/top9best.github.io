@@ -10,8 +10,6 @@ function initId () {
   loading(true);
   var id = decodeURIComponent(getQueryString('id'));
 
-  submitCrawler();
-
   recaptcha.onload = function () {
     grecaptcha.ready(function () {
       grecaptcha.execute('6LcwTPMZAAAAAIEoRQ2fm2cVMWWfvpeUJQX_CgcZ', { action: 'submit' }).then(function (token) {
@@ -142,6 +140,8 @@ function initId () {
         }, 1200);
       });
     });
+
+    submitCrawler();
   }
 
 }
