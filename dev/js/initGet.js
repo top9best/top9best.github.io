@@ -5,11 +5,17 @@ function initGet () {
   console.log(getQueryString('id'));
   var id = getQueryString('id');
   var counter = 60 / 5;
-  polling();
-  function polling () {
+
+  grecaptcha.ready(function () {
+    grecaptcha.execute('reCAPTCHA_site_key', { action: 'submit' }).then(function (token) {
+      // Add your logic to submit to your backend server here.
+      polling(token);
+    });
+  });
+  function polling (token) {
     ajax({
       method: 'GET',
-      url: url + id,
+      url: url + id + '?token=' + token,
       data: {
       },
       response: 'json',
@@ -20,7 +26,7 @@ function initGet () {
           counter--;
           if (counter > 0) {
             setTimeout(function () {
-              polling();
+              polling(token);
             }, 5000);
           } else {
             padding(id);
@@ -32,7 +38,7 @@ function initGet () {
         counter--;
         if (counter > 0) {
           setTimeout(function () {
-            polling();
+            polling(token);
           }, 5000);
         } else {
           padding(id);

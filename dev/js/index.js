@@ -1,3 +1,7 @@
+var recaptcha = document.createElement('script');
+recaptcha.src = 'https://www.google.com/recaptcha/api.js?render=6LcwTPMZAAAAAIEoRQ2fm2cVMWWfvpeUJQX_CgcZ';
+document.querySelector('head').append(recaptcha);
+
 var router = location.pathname;
 var content = document.querySelector('#content');
 var url = 'https://api.top9.best/v1/ig/';

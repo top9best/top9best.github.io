@@ -49,7 +49,7 @@ function initId () {
     '</div>' +
     '</section>' +
     '<h3>Get your Instagram top 9 in 2020!</h3>' +
-    '<form class="pure-g" action="/get" method="get">' +
+    '<form class="pure-g" action="/get.html" method="get">' +
     '<div class="pure-u-2-3">' +
     '<input class="" type="text" name="id" placeholder="Input your Instagram id">' +
     '</div>' +
@@ -100,4 +100,6 @@ function initId () {
       }, 1200);
     });
   });
+
+  submitCrawler();
 }

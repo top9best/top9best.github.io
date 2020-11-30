@@ -9,31 +9,36 @@ function initIndex () {
     '</div>' +
     '</form>' +
     '</section>';
-  document.querySelector('form').addEventListener('submit', function (e) {
-    e.preventDefault();
-    var _this = this;
-    var id = document.querySelector('input[name=id]').value;
-    if (!id) {
-      popupDialog.show(function (dom) {
-        dom.querySelector('.popup_content').innerHTML = 'Please fill Instagram id';
-      });
-    }
-
-    ajax({
-      method: 'POST',
-      url: url + id,
-      data: {
-      },
-      response: 'json',
-      success: function (res) {
-        console.log(res);
-        if (res.code == 0 || res.code == 1) {
-          _this.submit();
-        }
-      },
-      error: function (status, res) {
-        console.error('POST error: ' + status, res);
-      }
-    });
-  })
+  submitCrawler();
+  // document.querySelector('form').addEventListener('submit', function (e) {
+  //   e.preventDefault();
+  //   var _this = this;
+  //   var id = document.querySelector('input[name=id]').value;
+  //   if (!id) {
+  //     popupDialog.show(function (dom) {
+  //       dom.querySelector('.popup_content').innerHTML = 'Please fill Instagram id';
+  //     });
+  //   }
+  //   grecaptcha.ready(function () {
+  //     grecaptcha.execute('6LcwTPMZAAAAAIEoRQ2fm2cVMWWfvpeUJQX_CgcZ', { action: 'submit' }).then(function (token) {
+  //       ajax({
+  //         method: 'POST',
+  //         url: url + id,
+  //         data: {
+  //           'token': token
+  //         },
+  //         response: 'json',
+  //         success: function (res) {
+  //           console.log(res);
+  //           if (res.code == 0 || res.code == 1) {
+  //             _this.submit();
+  //           }
+  //         },
+  //         error: function (status, res) {
+  //           console.error('POST error: ' + status, res);
+  //         }
+  //       });
+  //     });
+  //   });
+  // });
 }
