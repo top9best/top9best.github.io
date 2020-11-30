@@ -6,12 +6,14 @@ function initGet () {
   var id = getQueryString('id');
   var counter = 60 / 5;
 
-  grecaptcha.ready(function () {
-    grecaptcha.execute('reCAPTCHA_site_key', { action: 'submit' }).then(function (token) {
-      // Add your logic to submit to your backend server here.
-      polling(token);
+  setTimeout(function () {
+    grecaptcha.ready(function () {
+      grecaptcha.execute('reCAPTCHA_site_key', { action: 'submit' }).then(function (token) {
+        polling(token);
+      });
     });
-  });
+  }, 1800);
+
   function polling (token) {
     ajax({
       method: 'GET',
