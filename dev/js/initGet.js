@@ -15,7 +15,7 @@ function initGet () {
       response: 'json',
       success: function (res) {
         if (res.code == 0) {
-          location.href = host + '/id/' + id;
+          location.href = host + '/id/' + id + '.html';
         } else {
           counter--;
           if (counter > 0) {
