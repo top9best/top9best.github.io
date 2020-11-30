@@ -4,7 +4,8 @@
   --content-padding: 1rem;
 }
 
-html, body {
+html,
+body {
   background: rgb(250, 250, 250);
   height: 100%;
 }
@@ -20,7 +21,7 @@ body {
 
 footer {
   flex-shrink: 0;
-  padding: .5rem;
+  padding: 0.5rem;
   box-sizing: border-box;
   text-align: center;
 }
@@ -34,7 +35,7 @@ canvas {
 }
 
 .vertical_centering:before {
-  content: '';
+  content: "";
   display: inline-block;
   vertical-align: middle;
   height: 100%;
@@ -49,7 +50,7 @@ canvas {
 
 header {
   color: #141414;
-  padding: .5rem;
+  padding: 0.5rem;
   border-bottom: solid #141414 1px;
   background: #fff;
 }
@@ -60,6 +61,11 @@ h2 {
   font-weight: bolder;
 }
 
+h2 * {
+  vertical-align: middle;
+  display: inline-block;
+}
+
 h2 a {
   color: #141414;
   text-decoration: none;
@@ -68,7 +74,7 @@ h2 a {
 h1 {
   font-size: 1.5rem;
   text-align: center;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }
 
 .btn-primary {
@@ -89,13 +95,14 @@ h1 {
   box-sizing: border-box;
 }
 
-#content form input, #content form button {
+#content form input,
+#content form button {
   width: 100%;
   box-sizing: border-box;
 }
 
 #content form input {
-  padding: .5rem;
+  padding: 0.5rem;
 }
 
 #content form button {
@@ -171,7 +178,7 @@ h1 {
   bottom: 0;
   left: 0;
   width: 100%;
-  background: rgba(255, 255, 255, .5);
+  background: rgba(255, 255, 255, 0.5);
   text-align: center;
   padding: 4px 0;
 }
@@ -194,7 +201,7 @@ h1 {
 
 .top9 article {
   font-size: 1.5rem;
-  margin: .5rem 0;
+  margin: 0.5rem 0;
   text-align: center;
 }
 
@@ -211,7 +218,7 @@ h1 {
   color: #0088ff;
   border: solid 1px #0088ff;
   background: transparent;
-  padding: .5rem;
+  padding: 0.5rem;
   border-radius: 4px;
 }
 
@@ -224,5 +231,5 @@ h1 {
 
 .share_link {
   display: inline-block;
-  margin-right: .5rem;
+  margin-right: 0.5rem;
 }
