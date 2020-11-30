@@ -10,7 +10,7 @@
         <meta name="keywords" content="photo grid, top9, 2020, instagram, collage">
         <meta name="description" itemprop="description" content="Generate Instagram top 9 photo grid in 2020">
         <meta property="og:title" itemprop="name" content="top9 - Instagram top 9 grid photo">
-        <meta property="og:url" itemprop="url" content="https://top9.best/">
+        <meta property="og:url" itemprop="url" content="https://top9.best/id/{{INSTAGRAM_ID}}.html">
         <meta property="og:image" itemprop="image" content="/favicon.png">
         <meta property="og:image:width" content="512">
         <meta property="og:image:height" content="512">
@@ -38,7 +38,7 @@
             integrity="sha512-9Y7KTqFZyLD5xbUBpA8HUl15Y/UkhtMGPy4TGKs/Ylno9X7voFHcFceJfNS3XBv0SkcIs5OH01YVJD7Ukb2eOA=="
             crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-        <link id="css" rel="stylesheet" href="/build/index.css?ts=1606704063798">
+        <link id="css" rel="stylesheet" href="/build/index.css?ts=1606704063794">
         <script src="/build/html2canvas.min.js"></script>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDR7NKQQ60"></script>
@@ -83,10 +83,9 @@
             integrity="sha512-BLaPLqY2LFOIcJJjGvv/1fojyBkhzuaKGhHWHFj7QOcpHelseTeUecnUBtTENdzr5ugPqNTaQKKtJh8jTg3dRQ=="
             crossorigin="anonymous"></script>
         <script>
-            var source = {
-            };
+            var source = {{ RESPONSE }};
         </script>
-        <script id="js" src="/build/index.js?ts=1606705288767"></script>
+        <script id="js" src="/build/index.js?ts=1606705288780"></script>
 
 
     </body>
