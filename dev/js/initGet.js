@@ -8,7 +8,7 @@ function initGet () {
 
   setTimeout(function () {
     grecaptcha.ready(function () {
-      grecaptcha.execute('reCAPTCHA_site_key', { action: 'submit' }).then(function (token) {
+      grecaptcha.execute('6LcwTPMZAAAAAIEoRQ2fm2cVMWWfvpeUJQX_CgcZ', { action: 'submit' }).then(function (token) {
         polling(token);
       });
     });
