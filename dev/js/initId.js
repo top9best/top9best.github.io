@@ -35,7 +35,7 @@ function initId () {
         loading(false);
         errorCode(res.code);
         if (res.code == 0) {
-          initData(res);
+          initData(res.data);
         } else {
         }
       },
