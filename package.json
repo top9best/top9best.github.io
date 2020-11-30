@@ -3,6 +3,7 @@
   "version": "",
   "devDependencies": {
     "autoprefixer": "^6.5.0",
+    "cheerio": "^1.0.0-rc.3",
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.0",
     "gulp-cssmin": "^0.1.7",

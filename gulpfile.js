@@ -13,7 +13,9 @@ const gulp = require('gulp'),
   autoprefixer = require('autoprefixer'),
   postcssApply = require('postcss-apply'),
   postcssVar = require('postcss-css-variables'),
-  postcss = require('gulp-postcss');
+  postcss = require('gulp-postcss'),
+  cheerio = require('cheerio'),
+  fs = require('fs');
 
 var cssPath = './dev/css/**/',
   jsPath = './dev/js/**/',
@@ -37,6 +39,7 @@ gulp.task('default', function (cb) {
       .pipe(postcss(processors))
       .pipe(cssmin())
       .pipe(gulp.dest(build));
+    updateTimeStamp('css');
   });
   watch(jsPath + '*.js', options, function (e) {
     // console.log('e:'+JSON.stringify(e));
@@ -46,5 +49,118 @@ gulp.task('default', function (cb) {
       .pipe(concat(js, { newLine: '\n' }))
       .pipe(uglify())
       .pipe(gulp.dest(build));
+    updateTimeStamp('js');
   });
 });
+
+function updateTimeStamp (type) {
+  // var $ = cheerio.load('index.html');
+  var html = '';
+  if (type == 'js') {
+    fs.readFile('index.html', function (err, html) {
+      if (err) {
+        throw err;
+      } else {
+        $ = cheerio.load(html.toString());
+        console.log($('#js').attr('src'));
+        $('#js').attr('src', '/build/' + js + '?ts=' + (new Date().getTime()));
+        console.log($('#js').attr('src'));
+        html = $.html();
+        fs.writeFile('index.html', html, function (err, data) {
+          if (err) {
+            return console.log(err);
+          }
+          console.log(data);
+        });
+      }
+    });
+    fs.readFile('get.html', function (err, html) {
+      if (err) {
+        throw err;
+      } else {
+        $ = cheerio.load(html.toString());
+        console.log($('#js').attr('src'));
+        $('#js').attr('src', '/build/' + js + '?ts=' + (new Date().getTime()));
+        console.log($('#js').attr('src'));
+        html = $.html();
+        fs.writeFile('get.html', html, function (err, data) {
+          if (err) {
+            return console.log(err);
+          }
+          console.log(data);
+        });
+      }
+    });
+
+  }
+  if (type == 'css') {
+    fs.readFile('index.html', function (err, html) {
+      if (err) {
+        throw err;
+      } else {
+        $ = cheerio.load(html.toString());
+        console.log($('#css').attr('href'));
+        $('#css').attr('href', '/build/' + css + '?ts=' + (new Date().getTime()));
+        console.log($('#css').attr('href'));
+        html = $.html();
+        fs.writeFile('index.html', html, function (err, data) {
+          if (err) {
+            return console.log(err);
+          }
+          console.log(data);
+        });
+      }
+    });
+    fs.readFile('404.html', function (err, html) {
+      if (err) {
+        throw err;
+      } else {
+        $ = cheerio.load(html.toString());
+        console.log($('#css').attr('href'));
+        $('#css').attr('href', '/build/' + css + '?ts=' + (new Date().getTime()));
+        console.log($('#css').attr('href'));
+        html = $.html();
+        fs.writeFile('404.html', html, function (err, data) {
+          if (err) {
+            return console.log(err);
+          }
+          console.log(data);
+        });
+      }
+    });
+    fs.readFile('get.html', function (err, html) {
+      if (err) {
+        throw err;
+      } else {
+        $ = cheerio.load(html.toString());
+        console.log($('#css').attr('href'));
+        $('#css').attr('href', '/build/' + css + '?ts=' + (new Date().getTime()));
+        console.log($('#css').attr('href'));
+        html = $.html();
+        fs.writeFile('get.html', html, function (err, data) {
+          if (err) {
+            return console.log(err);
+          }
+          console.log(data);
+        });
+      }
+    });
+    fs.readFile('policy.html', function (err, html) {
+      if (err) {
+        throw err;
+      } else {
+        $ = cheerio.load(html.toString());
+        console.log($('#css').attr('href'));
+        $('#css').attr('href', '/build/' + css + '?ts=' + (new Date().getTime()));
+        console.log($('#css').attr('href'));
+        html = $.html();
+        fs.writeFile('policy.html', html, function (err, data) {
+          if (err) {
+            return console.log(err);
+          }
+          console.log(data);
+        });
+      }
+    });
+  }
+}
