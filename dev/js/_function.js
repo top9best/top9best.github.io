@@ -175,7 +175,7 @@ function submitCrawler () {
   document.querySelector('form').addEventListener('submit', function (e) {
     e.preventDefault();
     var _this = this;
-    var id = document.querySelector('input[name=id]').value;
+    var id = document.querySelector('input[name=id]').value.toLowerCase();
     if (!id) {
       popupDialog.show(function (dom) {
         dom.querySelector('.popup_content').innerHTML = 'Please fill Instagram id';
