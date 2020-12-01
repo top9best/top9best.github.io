@@ -1,5 +1,28 @@
 function render (res, count) {
   document.querySelectorAll('#grid_section img')[count].src = res;
+  document.querySelectorAll('#grid_section img')[count].onload = function () {
+    computePosition(document.querySelectorAll('#grid_section img')[count]);
+  }
+}
+
+function computePosition (dom) {
+  var w = parseFloat(window.getComputedStyle(dom).width, 10);
+  var h = parseFloat(window.getComputedStyle(dom).height, 10);
+  console.log(w, h);
+  dom.style.position = 'absolute';
+  if (w > h) {
+    dom.style.top = '0';
+    dom.style.left = '50%';
+    dom.style.height = '100%';
+    dom.style.width = 'auto';
+    w = parseFloat(window.getComputedStyle(dom).width, 10);
+    dom.style.marginLeft = '-' + w / 2 + 'px';
+  }
+  if (h > w) {
+    dom.style.top = '50%';
+    dom.style.left = '0';
+    dom.style.marginTop = '-' + h / 2 + 'px';
+  }
 }
 
 function toDataURL (url, callback, count) {
@@ -156,8 +179,11 @@ function initGrid (vDom, postList) {
     div.classList.add(classGrid[i]);
     div.classList.add('grid_section');
     div.classList.add('grid_section_' + l);
+    var warp = document.createElement('div');
+    warp.classList.add('grid_wrap');
     var img = document.createElement('img');
-    div.appendChild(img);
+    warp.appendChild(img);
+    div.appendChild(warp);
     var liked = document.createElement('div');
     liked.setAttribute('class', 'liked_count vertical_centering');
     liked.innerHTML = likeSVG() + ' ' + thousandth(postList[i]['like_count']);
@@ -165,54 +191,6 @@ function initGrid (vDom, postList) {
     vDom.appendChild(div);
   }
   return vDom;
-}
-
-function initDownloadImage (grid, size) {
-  console.log('initDownloadImage');
-  if (browser() == 'Safari' || device.ios()) {
-    grid.style.width = size + 'px';
-    grid.style.height = size + 'px';
-    var images = grid.querySelectorAll('img');
-    var imageWidth = window.getComputedStyle(images[0]).width;
-    for (var i = 0; i < images.length; i++) {
-      images[i].style.width = imageWidth;
-      images[i].style.height = imageWidth;
-    }
-  } else {
-    grid.style.width = size + 'px';
-    grid.style.height = size + 'px';
-    grid.style.maxWidth = size + 'px';
-    grid.style.maxHeight = size + 'px';
-    var like = grid.querySelectorAll('.liked_count');
-    for (var k = 0; k < like.length; k++) {
-      like[k].style.fontSize = '2rem';
-      like[k].querySelector('svg').setAttribute('width', '32');
-      like[k].querySelector('svg').setAttribute('height', '32');
-    }
-  }
-}
-
-function resetDownloadImage (grid) {
-  if (browser() == 'Safari' || device.ios()) {
-    grid.style.width = '100vw';
-    grid.style.height = '100vw';
-    var images = grid.querySelectorAll('img');
-    for (var i = 0; i < images.length; i++) {
-      images[i].style.width = '100%';
-      images[i].style.height = '100%';
-    }
-  } else {
-    grid.style.width = '100vw';
-    grid.style.height = '100vw';
-    grid.style.maxWidth = '';
-    grid.style.maxHeight = '';
-    var like = grid.querySelectorAll('.liked_count');
-    for (var k = 0; k < like.length; k++) {
-      like[k].style.fontSize = '1rem';
-      like[k].querySelector('svg').setAttribute('width', '16');
-      like[k].querySelector('svg').setAttribute('height', '16');
-    }
-  }
 }
 
 function submitCrawler () {

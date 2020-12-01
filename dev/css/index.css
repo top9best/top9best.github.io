@@ -4,8 +4,7 @@
   --content-padding: 1rem;
 }
 
-html,
-body {
+html, body {
   background: rgb(250, 250, 250);
   height: 100%;
 }
@@ -97,8 +96,7 @@ h1 {
   box-sizing: border-box;
 }
 
-#content form input,
-#content form button {
+#content form input, #content form button {
   width: 100%;
   box-sizing: border-box;
 }
@@ -169,11 +167,16 @@ h1 {
   padding: 2px;
 }
 
-#grid_section img {
+#grid_section .grid_section .grid_wrap {
+  overflow: hidden;
   width: 100%;
   height: 100%;
+  position: relative;
+}
+
+#grid_section img {
+  width: 100%;
   display: block;
-  object-fit: cover;
 }
 
 .liked_count {
