@@ -27,8 +27,11 @@ function initId () {
   function getData (token) {
     ajax({
       method: 'GET',
-      url: url + id + '?token=' + token,
+      url: url + id,
       data: {
+      },
+      setRequestHeader: {
+        'i_token': token
       },
       response: 'json',
       success: function (res) {
