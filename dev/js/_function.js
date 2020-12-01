@@ -52,7 +52,7 @@ function getQueryString (name) {
 
 function padding (id) {
   content.innerHTML = '<div class="get_msg">Lots of people use now, please visit this url latter</div>' +
-    '<a class="get_msg" href="' + host + '/id/' + id + '" target="_blank">' + host + '/id/' + id + '</a>';
+    '<a class="get_msg" href="' + host + '/id.html?id=' + id + '" target="_blank">' + host + '/id.html?id=' + id + '</a>';
 }
 
 function errorCode (code) {
