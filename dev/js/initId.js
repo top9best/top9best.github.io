@@ -113,16 +113,18 @@ function initId () {
       e.preventDefault();
       loading(true);
       var grid = document.querySelector("#grid_section");
-      var size = 1200;
-      grid.style.width = size + 'px';
-      grid.style.height = size + 'px';
-      grid.style.maxWidth = size + 'px';
-      grid.style.maxHeight = size + 'px';
-      var like = grid.querySelectorAll('.liked_count');
-      for (var k = 0; k < like.length; k++) {
-        like[k].style.fontSize = '2rem';
-        like[k].querySelector('svg').setAttribute('width', '32');
-        like[k].querySelector('svg').setAttribute('height', '32');
+      if (browser() != 'Safari' && !device.ios()) {
+        var size = 1200;
+        grid.style.width = size + 'px';
+        grid.style.height = size + 'px';
+        grid.style.maxWidth = size + 'px';
+        grid.style.maxHeight = size + 'px';
+        var like = grid.querySelectorAll('.liked_count');
+        for (var k = 0; k < like.length; k++) {
+          like[k].style.fontSize = '2rem';
+          like[k].querySelector('svg').setAttribute('width', '32');
+          like[k].querySelector('svg').setAttribute('height', '32');
+        }
       }
 
       html2canvas(grid, {
