@@ -10,19 +10,26 @@ function initId () {
   loading(true);
   var id = decodeURIComponent(getQueryString('id'));
 
-  recaptcha.onload = function () {
-    grecaptcha.ready(function () {
-      grecaptcha.execute('6LcwTPMZAAAAAIEoRQ2fm2cVMWWfvpeUJQX_CgcZ', { action: 'submit' }).then(function (token) {
-        getData(token);
-      });
-    });
-  };
+  if (Object.keys(source).length) {
+    initData(source);
+    loading(false);
+  } else {
 
-  recaptcha.onerror = function () {
-    popupDialog.show(function (dom) {
-      dom.querySelector('.popup_content').innerHTML = 'Some error occurred, please try latter';
-    });
-  };
+    recaptcha.onload = function () {
+      grecaptcha.ready(function () {
+        grecaptcha.execute('6LcwTPMZAAAAAIEoRQ2fm2cVMWWfvpeUJQX_CgcZ', { action: 'submit' }).then(function (token) {
+          getData(token);
+        });
+      });
+    };
+
+    recaptcha.onerror = function () {
+      popupDialog.show(function (dom) {
+        dom.querySelector('.popup_content').innerHTML = 'Some error occurred, please try latter';
+      });
+    };
+  }
+
 
   function getData (token) {
     ajax({
@@ -38,6 +45,7 @@ function initId () {
         loading(false);
         errorCode(res.code);
         if (res.code == 0) {
+
           initData(res.data);
         } else {
         }
@@ -114,6 +122,9 @@ function initId () {
       loading(true);
       var grid = document.querySelector("#grid_section");
       var size = 1200;
+      if (browser() == 'Safari' || device.ios()) {
+        size = parseInt(window.getComputedStyle(grid).width, 10);
+      }
       initDownloadImage(grid, size);
 
       html2canvas(grid, {
@@ -130,7 +141,7 @@ function initId () {
       }).then(function (canvas) {
         document.body.appendChild(canvas);
         downloadURI();
-        resetDownloadImage(grid, size);
+        resetDownloadImage(grid);
         canvas.classList.add('hide');
         // delay
         setTimeout(function () {

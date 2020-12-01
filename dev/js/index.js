@@ -17,6 +17,7 @@ switch (router) {
     break;
   case '/id':
   case '/id.html':
+  case '/mock.html':
     initId();
     break;
   default:
