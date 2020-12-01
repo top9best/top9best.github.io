@@ -26,12 +26,12 @@ footer {
   text-align: center;
 }
 
-canvas {
+/* canvas {
   display: none;
-}
+} */
 
 .hide {
-  display: none;
+  display: none !important;
 }
 
 .vertical_centering:before {

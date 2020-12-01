@@ -113,19 +113,16 @@ function initId () {
       e.preventDefault();
       loading(true);
       var grid = document.querySelector("#grid_section");
-      var size = window.getComputedStyle(grid).getPropertyValue('width');;
-      if (browser() != 'Safari' && !device.ios()) {
-        size = 1200;
-        grid.style.width = size + 'px';
-        grid.style.height = size + 'px';
-        grid.style.maxWidth = size + 'px';
-        grid.style.maxHeight = size + 'px';
-        var like = grid.querySelectorAll('.liked_count');
-        for (var k = 0; k < like.length; k++) {
-          like[k].style.fontSize = '2rem';
-          like[k].querySelector('svg').setAttribute('width', '32');
-          like[k].querySelector('svg').setAttribute('height', '32');
-        }
+      var size = 1200;
+      grid.style.width = size + 'px';
+      grid.style.height = size + 'px';
+      grid.style.maxWidth = size + 'px';
+      grid.style.maxHeight = size + 'px';
+      var like = grid.querySelectorAll('.liked_count');
+      for (var k = 0; k < like.length; k++) {
+        like[k].style.fontSize = '2rem';
+        like[k].querySelector('svg').setAttribute('width', '32');
+        like[k].querySelector('svg').setAttribute('height', '32');
       }
 
       html2canvas(grid, {
@@ -142,17 +139,16 @@ function initId () {
       }).then(function (canvas) {
         document.body.appendChild(canvas);
         downloadURI();
-        if (browser() != 'Safari' && !device.ios()) {
-          grid.style.width = '100vw';
-          grid.style.height = '100vw';
-          grid.style.maxWidth = '';
-          grid.style.maxHeight = '';
-          for (var k = 0; k < like.length; k++) {
-            like[k].style.fontSize = '1rem';
-            like[k].querySelector('svg').setAttribute('width', '16');
-            like[k].querySelector('svg').setAttribute('height', '16');
-          }
+        grid.style.width = '100vw';
+        grid.style.height = '100vw';
+        grid.style.maxWidth = '';
+        grid.style.maxHeight = '';
+        for (var k = 0; k < like.length; k++) {
+          like[k].style.fontSize = '1rem';
+          like[k].querySelector('svg').setAttribute('width', '16');
+          like[k].querySelector('svg').setAttribute('height', '16');
         }
+        canvas.classList.add('hide');
         // delay
         setTimeout(function () {
           loading(false);
