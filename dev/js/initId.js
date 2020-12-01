@@ -121,27 +121,22 @@ function initId () {
       e.preventDefault();
       loading(true);
       var grid = document.querySelector("#grid_section");
-      var size = 1200;
-      if (browser() == 'Safari' || device.ios()) {
-        size = parseInt(window.getComputedStyle(grid).width, 10);
-      }
-      initDownloadImage(grid, size);
+      var size = parseFloat(window.getComputedStyle(grid).width, 10);
 
       html2canvas(grid, {
         allowTaint: true,
         useCORS: true,
-        foreignObjectRendering: true,
+        foreignObjectRendering: false,
         width: size,
         height: size,
-        x: 0,
-        y: 0,
-        scale: 1,
+        x: grid.offsetLeft,
+        y: grid.offsetTop,
+        scale: 2,
         scrollX: 0,
         scrollY: 0
       }).then(function (canvas) {
         document.body.appendChild(canvas);
         downloadURI();
-        resetDownloadImage(grid);
         canvas.classList.add('hide');
         // delay
         setTimeout(function () {
