@@ -114,21 +114,7 @@ function initId () {
       loading(true);
       var grid = document.querySelector("#grid_section");
       var size = 1200;
-      grid.style.width = size + 'px';
-      grid.style.height = size + 'px';
-      grid.style.maxWidth = size + 'px';
-      grid.style.maxHeight = size + 'px';
-      var images = grid.querySelectorAll('img');
-      for (var i = 0; i < images.length; i++) {
-        images[i].style.width = '396px';
-        images[i].style.height = '396px';
-      }
-      var like = grid.querySelectorAll('.liked_count');
-      for (var k = 0; k < like.length; k++) {
-        like[k].style.fontSize = '2rem';
-        like[k].querySelector('svg').setAttribute('width', '32');
-        like[k].querySelector('svg').setAttribute('height', '32');
-      }
+      initDownloadImage(grid, size);
 
       html2canvas(grid, {
         allowTaint: true,
@@ -144,19 +130,7 @@ function initId () {
       }).then(function (canvas) {
         document.body.appendChild(canvas);
         downloadURI();
-        grid.style.width = '100vw';
-        grid.style.height = '100vw';
-        grid.style.maxWidth = '';
-        grid.style.maxHeight = '';
-        for (var i = 0; i < images.length; i++) {
-          images[i].style.width = '100%';
-          images[i].style.height = '100%';
-        }
-        for (var k = 0; k < like.length; k++) {
-          like[k].style.fontSize = '1rem';
-          like[k].querySelector('svg').setAttribute('width', '16');
-          like[k].querySelector('svg').setAttribute('height', '16');
-        }
+        resetDownloadImage(grid, size);
         canvas.classList.add('hide');
         // delay
         setTimeout(function () {

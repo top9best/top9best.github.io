@@ -1,5 +1,5 @@
 :root {
-  --grid-size: 300px;
+  --grid-size: 640px;
   --grid-padding: 1rem;
   --content-padding: 1rem;
 }
@@ -117,8 +117,8 @@ h1 {
   max-width: var(--grid-size);
   max-height: var(--grid-size);
   margin: 0 auto;
-  width: 100vw;
-  height: 100vw;
+  width: calc(100vw - var(--content-padding) * 2);
+  height: calc(100vw - var(--content-padding) * 2);
 }
 
 #grid_section .grid_section {
