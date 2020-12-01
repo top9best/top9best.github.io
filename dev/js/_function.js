@@ -175,11 +175,20 @@ function submitCrawler () {
   document.querySelector('form').addEventListener('submit', function (e) {
     e.preventDefault();
     var _this = this;
+    var regex = new RegExp(/^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/);
     var id = document.querySelector('input[name=id]').value.toLowerCase();
     if (!id) {
       popupDialog.show(function (dom) {
         dom.querySelector('.popup_content').innerHTML = 'Please fill Instagram id';
       });
+      return;
+    }
+    var validation = regex.test(id);
+    if (!validation) {
+      popupDialog.show(function (dom) {
+        dom.querySelector('.popup_content').innerHTML = 'Please fill valid Instagram id';
+      });
+      return;
     }
     grecaptcha.ready(function () {
       grecaptcha.execute('6LcwTPMZAAAAAIEoRQ2fm2cVMWWfvpeUJQX_CgcZ', { action: 'submit' }).then(function (token) {
