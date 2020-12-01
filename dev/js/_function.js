@@ -172,6 +172,9 @@ function submitCrawler () {
     console.error('no form');
     return;
   }
+  document.querySelector('form input[name=id]').addEventListener('blur', function (e) {
+    this.value = this.value.toLowerCase().trim();
+  });
   document.querySelector('form').addEventListener('submit', function (e) {
     e.preventDefault();
     var _this = this;
