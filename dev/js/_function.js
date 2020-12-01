@@ -169,7 +169,15 @@ function initGrid (vDom, postList) {
 
 function initDownloadImage (grid, size) {
   if (browser() == 'Safari' || device.ios()) {
-
+    size = window.getComputedStyle(grid).width;
+    grid.style.width = size;
+    grid.style.height = size;
+    var images = grid.querySelectorAll('img');
+    var imageWidth = window.getComputedStyle(images[0]).width;
+    for (var i = 0; i < images.length; i++) {
+      images[i].style.width = imageWidth;
+      images[i].style.height = imageWidth;
+    }
   } else {
     grid.style.width = size + 'px';
     grid.style.height = size + 'px';
@@ -186,7 +194,13 @@ function initDownloadImage (grid, size) {
 
 function resetDownloadImage (grid, size) {
   if (browser() == 'Safari' || device.ios()) {
-
+    grid.style.width = '100vw';
+    grid.style.height = '100vw';
+    var images = grid.querySelectorAll('img');
+    for (var i = 0; i < images.length; i++) {
+      images[i].style.width = '100%';
+      images[i].style.height = '100%';
+    }
   } else {
     grid.style.width = '100vw';
     grid.style.height = '100vw';
