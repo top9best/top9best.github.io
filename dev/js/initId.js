@@ -118,6 +118,11 @@ function initId () {
       grid.style.height = size + 'px';
       grid.style.maxWidth = size + 'px';
       grid.style.maxHeight = size + 'px';
+      var images = grid.querySelectorAll('img');
+      for (var i = 0; i < images.length; i++) {
+        images[i].style.width = '396px';
+        images[i].style.height = '396px';
+      }
       var like = grid.querySelectorAll('.liked_count');
       for (var k = 0; k < like.length; k++) {
         like[k].style.fontSize = '2rem';
@@ -143,6 +148,10 @@ function initId () {
         grid.style.height = '100vw';
         grid.style.maxWidth = '';
         grid.style.maxHeight = '';
+        for (var i = 0; i < images.length; i++) {
+          images[i].style.width = '100%';
+          images[i].style.height = '100%';
+        }
         for (var k = 0; k < like.length; k++) {
           like[k].style.fontSize = '1rem';
           like[k].querySelector('svg').setAttribute('width', '16');
