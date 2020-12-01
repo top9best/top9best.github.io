@@ -34,7 +34,11 @@ function initGet () {
           counter--;
           if (counter > 0) {
             setTimeout(function () {
-              polling(token);
+              grecaptcha.ready(function () {
+                grecaptcha.execute('6LcwTPMZAAAAAIEoRQ2fm2cVMWWfvpeUJQX_CgcZ', { action: 'submit' }).then(function (token) {
+                  polling(token);
+                });
+              });
             }, 5000);
           } else {
             padding(id);
@@ -46,7 +50,11 @@ function initGet () {
         counter--;
         if (counter > 0) {
           setTimeout(function () {
-            polling(token);
+            grecaptcha.ready(function () {
+              grecaptcha.execute('6LcwTPMZAAAAAIEoRQ2fm2cVMWWfvpeUJQX_CgcZ', { action: 'submit' }).then(function (token) {
+                polling(token);
+              });
+            });
           }, 5000);
         } else {
           padding(id);
