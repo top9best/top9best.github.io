@@ -91,6 +91,23 @@ function updateTimeStamp (type) {
         });
       }
     });
+    fs.readFile('id.html', function (err, html) {
+      if (err) {
+        throw err;
+      } else {
+        $ = cheerio.load(html.toString());
+        console.log($('#js').attr('src'));
+        $('#js').attr('src', '/build/' + js + '?ts=' + (new Date().getTime()));
+        console.log($('#js').attr('src'));
+        html = $.html();
+        fs.writeFile('id.html', html, function (err, data) {
+          if (err) {
+            return console.log(err);
+          }
+          console.log(data);
+        });
+      }
+    });
 
   }
   if (type == 'css') {
@@ -138,6 +155,23 @@ function updateTimeStamp (type) {
         console.log($('#css').attr('href'));
         html = $.html();
         fs.writeFile('get.html', html, function (err, data) {
+          if (err) {
+            return console.log(err);
+          }
+          console.log(data);
+        });
+      }
+    });
+    fs.readFile('id.html', function (err, html) {
+      if (err) {
+        throw err;
+      } else {
+        $ = cheerio.load(html.toString());
+        console.log($('#css').attr('href'));
+        $('#css').attr('href', '/build/' + css + '?ts=' + (new Date().getTime()));
+        console.log($('#css').attr('href'));
+        html = $.html();
+        fs.writeFile('id.html', html, function (err, data) {
           if (err) {
             return console.log(err);
           }
