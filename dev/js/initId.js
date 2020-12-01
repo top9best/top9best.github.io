@@ -113,8 +113,9 @@ function initId () {
       e.preventDefault();
       loading(true);
       var grid = document.querySelector("#grid_section");
+      var size = window.getComputedStyle(grid).getPropertyValue('width');;
       if (browser() != 'Safari' && !device.ios()) {
-        var size = 1200;
+        size = 1200;
         grid.style.width = size + 'px';
         grid.style.height = size + 'px';
         grid.style.maxWidth = size + 'px';
@@ -141,16 +142,18 @@ function initId () {
       }).then(function (canvas) {
         document.body.appendChild(canvas);
         downloadURI();
-        grid.style.width = '100vw';
-        grid.style.height = '100vw';
-        grid.style.maxWidth = '';
-        grid.style.maxHeight = '';
-        for (var k = 0; k < like.length; k++) {
-          like[k].style.fontSize = '1rem';
-          like[k].querySelector('svg').setAttribute('width', '16');
-          like[k].querySelector('svg').setAttribute('height', '16');
+        if (browser() != 'Safari' && !device.ios()) {
+          grid.style.width = '100vw';
+          grid.style.height = '100vw';
+          grid.style.maxWidth = '';
+          grid.style.maxHeight = '';
+          for (var k = 0; k < like.length; k++) {
+            like[k].style.fontSize = '1rem';
+            like[k].querySelector('svg').setAttribute('width', '16');
+            like[k].querySelector('svg').setAttribute('height', '16');
+          }
         }
-        // UX delay
+        // delay
         setTimeout(function () {
           loading(false);
         }, 1200);
