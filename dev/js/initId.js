@@ -118,6 +118,12 @@ function initId () {
       grid.style.height = size + 'px';
       grid.style.maxWidth = size + 'px';
       grid.style.maxHeight = size + 'px';
+      var like = grid.querySelectorAll('.liked_count');
+      for (var k = 0; k < like.length; k++) {
+        like[k].style.fontSize = '2rem';
+        like[k].querySelector('svg').setAttribute('width', '32');
+        like[k].querySelector('svg').setAttribute('height', '32');
+      }
 
       html2canvas(grid, {
         allowTaint: true,
@@ -137,6 +143,11 @@ function initId () {
         grid.style.height = '100vw';
         grid.style.maxWidth = '';
         grid.style.maxHeight = '';
+        for (var k = 0; k < like.length; k++) {
+          like[k].style.fontSize = '1rem';
+          like[k].querySelector('svg').setAttribute('width', '16');
+          like[k].querySelector('svg').setAttribute('height', '16');
+        }
         // UX delay
         setTimeout(function () {
           loading(false);

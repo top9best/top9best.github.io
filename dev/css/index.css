@@ -234,3 +234,8 @@ h1 {
   display: inline-block;
   margin-right: 0.5rem;
 }
+
+.share_link img {
+  width: 32px;
+  height: 32px;
+}
