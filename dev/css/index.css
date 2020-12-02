@@ -17,6 +17,12 @@ body {
     Tahoma, Geneva, sans-serif !important;
 }
 
+p {
+  margin: 0.5rem 0;
+  line-height: 1.3;
+  font-size: 0.75rem;
+}
+
 #container {
   flex: 1 0 auto;
 }

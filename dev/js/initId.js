@@ -94,6 +94,7 @@ function initId () {
       '<section id="content_download" class="pure-g">' +
       '<div class="pure-u-1 pure-u-sm-1-2">' +
       '<button class="btn-download" id="download">Download Image</button>' +
+      '<p>If you can\'t download, please open this page in browser</p>' +
       '</div>' +
       '<div class="pure-u-1 pure-u-sm-1-2">' +
       shareDom +
