@@ -146,7 +146,7 @@ function initId () {
       var size = parseFloat(window.getComputedStyle(grid).width, 10);
       var x = grid.offsetLeft;
       var y = grid.offsetTop;
-      if (device.mobile() && browser() == 'Chrome') {
+      if (device.android() && browser() == 'Chrome') {
         x = 0;
         y = 0;
       }
