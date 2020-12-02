@@ -104,10 +104,10 @@ function initDownloadImage (grid, size) {
 }
 
 function resetDownloadImage (grid) {
-  grid.style.width = '100vw';
-  grid.style.height = '100vw';
-  grid.style.maxWidth = '';
-  grid.style.maxHeight = '';
+  grid.style.width = 'calc(100vw - 1rem*2)';
+  grid.style.height = 'calc(100vw - 1rem*2)';
+  grid.style.maxWidth = '640px';
+  grid.style.maxHeight = '640px';
   var like = grid.querySelectorAll('.liked_count');
   for (var k = 0; k < like.length; k++) {
     like[k].style.fontSize = '1rem';
