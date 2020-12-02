@@ -90,6 +90,32 @@ function computeGirdPosition (dom) {
   }
 }
 
+function initDownloadImage (grid, size) {
+  grid.style.width = size + 'px';
+  grid.style.height = size + 'px';
+  grid.style.maxWidth = size + 'px';
+  grid.style.maxHeight = size + 'px';
+  var like = grid.querySelectorAll('.liked_count');
+  for (var k = 0; k < like.length; k++) {
+    like[k].style.fontSize = '2rem';
+    like[k].querySelector('svg').setAttribute('width', '32');
+    like[k].querySelector('svg').setAttribute('height', '32');
+  }
+}
+
+function resetDownloadImage (grid) {
+  grid.style.width = '100vw';
+  grid.style.height = '100vw';
+  grid.style.maxWidth = '';
+  grid.style.maxHeight = '';
+  var like = grid.querySelectorAll('.liked_count');
+  for (var k = 0; k < like.length; k++) {
+    like[k].style.fontSize = '1rem';
+    like[k].querySelector('svg').setAttribute('width', '16');
+    like[k].querySelector('svg').setAttribute('height', '16');
+  }
+}
+
 function downloadURI () {
   // var fileName = 'grid_' + new Date() + '.png';
   var fileName = 'top9_grid.png';

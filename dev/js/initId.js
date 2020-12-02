@@ -141,19 +141,24 @@ function initId () {
     document.querySelector('#download').addEventListener('click', function (e) {
       e.preventDefault();
       loading(true);
-      // var grid = document.querySelector("#grid_section");
-      var grid = createDownloadGrid(content, document.querySelector("#grid_section"));
-      var size = parseFloat(window.getComputedStyle(grid).width, 10);
-      var x = grid.offsetLeft;
-      var y = grid.offsetTop;
-      if (device.android() && browser() == 'Chrome') {
-        x = 0;
-        y = 0;
+      var grid = document.querySelector("#grid_section");
+      var size = 1280;
+      var x = 0;
+      var y = 0;
+      var foreignObjectRendering = true;
+      if (device.ios() || browser() == 'Safari') {
+        grid = createDownloadGrid(content, document.querySelector("#grid_section"));
+        size = parseFloat(window.getComputedStyle(grid).width, 10);
+        x = grid.offsetLeft;
+        y = grid.offsetTop;
+        foreignObjectRendering = false;
+      } else {
+        initDownloadImage(grid, size);
       }
       html2canvas(grid, {
         allowTaint: true,
         useCORS: true,
-        foreignObjectRendering: false,
+        foreignObjectRendering: foreignObjectRendering,
         width: size,
         height: size,
         x: x,
@@ -165,7 +170,11 @@ function initId () {
         document.body.appendChild(canvas);
         downloadURI();
         canvas.classList.add('hide');
-        destoryDownloadGrid();
+        if (device.ios() || browser() == 'Safari') {
+          destoryDownloadGrid();
+        } else {
+          resetDownloadImage(grid);
+        }
         // delay
         setTimeout(function () {
           loading(false);
