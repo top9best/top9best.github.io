@@ -13,6 +13,8 @@ body {
 body {
   display: flex;
   flex-direction: column;
+  font-family: Microsoft JhengHei, Heiti, Roboto, Helvetica, Arial, monospace,
+    Tahoma, Geneva, sans-serif !important;
 }
 
 #container {
@@ -95,6 +97,11 @@ h1 {
 .btn-primary:hover {
   font-weight: bolder;
   cursor: pointer;
+}
+
+#hash_tag {
+  margin: 1rem 0;
+  text-align: center;
 }
 
 #content {
