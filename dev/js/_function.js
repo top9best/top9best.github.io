@@ -1,28 +1,8 @@
 function render (res, count) {
   document.querySelectorAll('#grid_section img')[count].src = res;
-  document.querySelectorAll('#grid_section img')[count].onload = function () {
-    computePosition(document.querySelectorAll('#grid_section img')[count]);
-  }
-}
-
-function computePosition (dom) {
-  var w = parseFloat(window.getComputedStyle(dom).width, 10);
-  var h = parseFloat(window.getComputedStyle(dom).height, 10);
-  console.log(w, h);
-  dom.style.position = 'absolute';
-  if (w > h) {
-    dom.style.top = '0';
-    dom.style.left = '50%';
-    dom.style.height = '100%';
-    dom.style.width = 'auto';
-    w = parseFloat(window.getComputedStyle(dom).width, 10);
-    dom.style.marginLeft = '-' + w / 2 + 'px';
-  }
-  if (h > w) {
-    dom.style.top = '50%';
-    dom.style.left = '0';
-    dom.style.marginTop = '-' + h / 2 + 'px';
-  }
+  // document.querySelectorAll('#grid_section img')[count].onload = function () {
+  //   computeGirdPosition(document.querySelectorAll('#grid_section img')[count]);
+  // }
 }
 
 function toDataURL (url, callback, count) {
@@ -47,6 +27,49 @@ function toDataURL (url, callback, count) {
   xhr.open('GET', url);
   xhr.responseType = 'blob';
   xhr.send();
+}
+
+function createDownloadGrid (container, grid) {
+  var cloneGrid = grid.cloneNode(true);
+  cloneGrid.setAttribute('id', 'grid_download');
+  cloneGrid.style.width = '1280px';
+  cloneGrid.style.height = '1280px';
+  cloneGrid.style.maxWidth = '1280px';
+  cloneGrid.style.maxHeight = '1280px';
+  container.appendChild(cloneGrid);
+  var images = cloneGrid.querySelectorAll('img');
+  console.log('IMAGES', images);
+  for (var i = 0; i < images.length; i++) {
+    images[i].classList.remove('preview');
+    computeGirdPosition(images[i]);
+  }
+  return cloneGrid;
+}
+
+function destoryDownloadGrid () {
+  var dolGrid = document.querySelector('#grid_download');
+  dolGrid.innerHTML = '';
+  dolGrid.remove();
+}
+
+function computeGirdPosition (dom) {
+  var w = parseFloat(window.getComputedStyle(dom).width, 10);
+  var h = parseFloat(window.getComputedStyle(dom).height, 10);
+  console.log(w, h);
+  dom.style.position = 'absolute';
+  if (w > h) {
+    dom.style.top = '0';
+    dom.style.left = '50%';
+    dom.style.height = '100%';
+    dom.style.width = 'auto';
+    w = parseFloat(window.getComputedStyle(dom).width, 10);
+    dom.style.marginLeft = '-' + w / 2 + 'px';
+  }
+  if (h > w) {
+    dom.style.top = '50%';
+    dom.style.left = '0';
+    dom.style.marginTop = '-' + h / 2 + 'px';
+  }
 }
 
 function downloadURI () {
@@ -182,6 +205,7 @@ function initGrid (vDom, postList) {
     var warp = document.createElement('div');
     warp.classList.add('grid_wrap');
     var img = document.createElement('img');
+    img.classList.add('preview');
     warp.appendChild(img);
     div.appendChild(warp);
     var liked = document.createElement('div');

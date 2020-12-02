@@ -120,7 +120,8 @@ function initId () {
     document.querySelector('#download').addEventListener('click', function (e) {
       e.preventDefault();
       loading(true);
-      var grid = document.querySelector("#grid_section");
+      // var grid = document.querySelector("#grid_section");
+      var grid = createDownloadGrid(content, document.querySelector("#grid_section"));
       var size = parseFloat(window.getComputedStyle(grid).width, 10);
 
       html2canvas(grid, {
@@ -131,13 +132,14 @@ function initId () {
         height: size,
         x: grid.offsetLeft,
         y: grid.offsetTop,
-        scale: 2,
+        scale: 1,
         scrollX: 0,
         scrollY: 0
       }).then(function (canvas) {
         document.body.appendChild(canvas);
         downloadURI();
         canvas.classList.add('hide');
+        destoryDownloadGrid();
         // delay
         setTimeout(function () {
           loading(false);
