@@ -38,7 +38,6 @@ function createDownloadGrid (container, grid) {
   cloneGrid.style.maxHeight = '1280px';
   container.appendChild(cloneGrid);
   var images = cloneGrid.querySelectorAll('img');
-  console.log('IMAGES', images);
   for (var i = 0; i < images.length; i++) {
     images[i].classList.remove('preview');
     computeGirdPosition(images[i]);
@@ -55,7 +54,6 @@ function destoryDownloadGrid () {
 function computeGirdPosition (dom) {
   var w = parseFloat(window.getComputedStyle(dom).width, 10);
   var h = parseFloat(window.getComputedStyle(dom).height, 10);
-  console.log(w, h);
   dom.style.position = 'absolute';
   if (w > h) {
     dom.style.top = '0';

@@ -2,7 +2,6 @@ function initGet () {
   content.innerHTML = '<div class="get_msg animate__animated animate__flash animate__infinite animate__slower">📸 Counting picture...</div>' +
     '<div class="get_msg animate__animated animate__flash animate__infinite animate__slower">❤️ Counting liked...</div>' +
     '<div class="get_msg">Please wait about 1 minute</div>';
-  console.log(getQueryString('id'));
   var id = getQueryString('id');
   var counter = 60 / 5;
 
