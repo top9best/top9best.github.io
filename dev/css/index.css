@@ -222,6 +222,17 @@ h1 {
   object-fit: cover;
 }
 
+.index {
+  text-align: center;
+}
+.index h2 {
+  margin: 1rem 0;
+}
+
+#user_post iframe {
+  margin: 0 auto !important;
+}
+
 .liked_count {
   position: absolute;
   bottom: 0;
