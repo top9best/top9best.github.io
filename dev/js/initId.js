@@ -129,9 +129,7 @@ function initId () {
           }
         ).catch(
           function (e) {
-            popupDialog.show(function (dom) {
-              dom.querySelector('.popup_content').innerHTML = 'Some error occurred: ' + e;
-            });
+            console.error('Share Error:', e);
           }
         );
       });
