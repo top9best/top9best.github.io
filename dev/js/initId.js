@@ -78,7 +78,8 @@ function initId () {
       'iconWhatsapp2x': '/images/icon_whatsapp_64.png'
     };
 
-    var share = mobile_share_module(location.href.replace(location.search, '') + '?id=' + encodeURIComponent(id) + '&ref=sharing', imgUrl);
+    var shareUrl = location.href.replace(location.search, '') + '?id=' + encodeURIComponent(id) + '&ref=sharing';
+    var share = mobile_share_module(shareUrl, imgUrl);
     var shareDom = '<a class="share_link" href="' + share.facebook.href + '" target="_blank"><img src="' + share.facebook.icon + '" srcset="' + share.facebook.icon_2x + ' 1.5x, ' + share.facebook.icon_2x + ' 2x, ' + share.facebook.icon_2x + ' 3x" alt="Facebook"></a>';
     shareDom = shareDom + '<a class="share_link" href="' + share.line.href + '" target="_blank"><img src="' + share.line.icon + '" srcset="' + share.line.icon_2x + ' 1.5x, ' + share.line.icon_2x + ' 2x, ' + share.line.icon_2x + ' 3x" alt="LINE"></a>';
     shareDom = shareDom + '<a class="share_link" href="' + share.pinterest.href + '" target="_blank"><img src="' + share.pinterest.icon + '" srcset="' + share.pinterest.icon_2x + ' 1.5x, ' + share.pinterest.icon_2x + ' 2x, ' + share.pinterest.icon_2x + ' 3x" alt="Pinterest"></a>';
@@ -86,6 +87,7 @@ function initId () {
     if (device.mobile()) {
       shareDom = shareDom + '<a class="share_link" href="' + share.messenger.href + '" target="_blank"><img src="' + share.messenger.icon + '" srcset="' + share.messenger.icon_2x + ' 1.5x, ' + share.messenger.icon_2x + ' 2x, ' + share.messenger.icon_2x + ' 3x" alt="Messenger"></a>';
       shareDom = shareDom + '<a class="share_link" href="' + share.whatsapp.href + '" target="_blank"><img src="' + share.whatsapp.icon + '" srcset="' + share.whatsapp.icon_2x + ' 1.5x, ' + share.whatsapp.icon_2x + ' 2x, ' + share.whatsapp.icon_2x + ' 3x" alt="WhatsApp"></a>';
+      shareDom = shareDom + '<a id="share_share" class="share_link" href="javascript:void(0)" target="_blank"><img src="/images/icon_share_32.png" srcset="/images/icon_share_64.png 1.5x, /images/icon_share_64.png 2x, /images/icon_share_64.png 3x" alt="WhatsApp"></a>';
     }
 
     content.innerHTML = '<h2>' + title + '</h2>' +
@@ -114,6 +116,26 @@ function initId () {
 
     document.querySelector('#grid_section').appendChild(initGrid(fragment, postList));
 
+    if (device.mobile()) {
+      document.querySelector('#share_share').addEventListener('click', function () {
+        var shareData = {
+          title: 'This is my top 9 liked post in 2020',
+          text: 'This is my top 9 liked post in 2020! ' + thousandth(totalLikedCount) + ' ❤️ & ' + thousandth(totalPostCount) + ' 📸   #top9of2020',
+          url: shareUrl,
+        };
+        navigator.share(shareData).then(
+          function () {
+            console.log('Shared successfully');
+          }
+        ).catch(
+          function (e) {
+            popupDialog.show(function (dom) {
+              dom.querySelector('.popup_content').innerHTML = 'Some error occurred: ' + e;
+            });
+          }
+        );
+      });
+    }
     for (var i = 0; i < postList.length; i++) {
       toDataURL(postList[i]['url'], render, i);
     }
