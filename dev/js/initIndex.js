@@ -7,7 +7,7 @@ function initIndex () {
 
   content.classList.add('index');
   content.innerHTML = '<article>You can input your Instagram id to check most liked top 9 post in 2020!</article>' +
-    '<section id="hash_tag"><a class="btn-primary" href="https://www.instagram.com/explore/tags/top9of2020/" targrt="_blank">#top9of2020</a></section>' +
+    '<section id="hash_tag"><a class="btn-primary" href="https://www.instagram.com/explore/tags/top9of2020/" target="_blank">#top9of2020</a></section>' +
     '<section>' +
     '<form class="pure-g" action="/get.html" method="get">' +
     '<div class="pure-u-3-4">' +
