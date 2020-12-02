@@ -144,15 +144,20 @@ function initId () {
       // var grid = document.querySelector("#grid_section");
       var grid = createDownloadGrid(content, document.querySelector("#grid_section"));
       var size = parseFloat(window.getComputedStyle(grid).width, 10);
-
+      var x = grid.offsetLeft;
+      var y = grid.offsetTop;
+      if (device.mobile() && browser() == 'Chrome') {
+        x = 0;
+        y = 0;
+      }
       html2canvas(grid, {
         allowTaint: true,
         useCORS: true,
         foreignObjectRendering: false,
         width: size,
         height: size,
-        x: grid.offsetLeft,
-        y: grid.offsetTop,
+        x: x,
+        y: y,
         scale: 1,
         scrollX: 0,
         scrollY: 0
