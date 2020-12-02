@@ -55,15 +55,35 @@ function computeGirdPosition (dom) {
   var w = parseFloat(window.getComputedStyle(dom).width, 10);
   var h = parseFloat(window.getComputedStyle(dom).height, 10);
   dom.style.position = 'absolute';
-  if (w > h) {
+  console.log(w, h, (w - h));
+  if ((w - h) < 5) {
+    var wrapW = parseFloat(window.getComputedStyle(dom.parentNode).width, 10);
+    var wrapH = parseFloat(window.getComputedStyle(dom.parentNode).height, 10);
+    console.log(wrapW, wrapH);
+    if (wrapW > wrapH) {
+      dom.style.top = '50%';
+      dom.style.left = '0';
+      dom.style.width = '100%';
+      dom.style.height = 'auto';
+      h = parseFloat(window.getComputedStyle(dom).height, 10);
+      dom.style.marginTop = '-' + h / 2 + 'px';
+    }
+    if (wrapH > wrapW) {
+      dom.style.top = '0';
+      dom.style.left = '50%';
+      dom.style.width = 'auto';
+      dom.style.height = '100%';
+      w = parseFloat(window.getComputedStyle(dom).width, 10);
+      dom.style.marginLeft = '-' + w / 2 + 'px';
+    }
+  } else if (w > h) {
     dom.style.top = '0';
     dom.style.left = '50%';
     dom.style.height = '100%';
     dom.style.width = 'auto';
     w = parseFloat(window.getComputedStyle(dom).width, 10);
     dom.style.marginLeft = '-' + w / 2 + 'px';
-  }
-  if (h > w) {
+  } else if (h > w) {
     dom.style.top = '50%';
     dom.style.left = '0';
     dom.style.marginTop = '-' + h / 2 + 'px';
