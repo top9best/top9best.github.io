@@ -166,7 +166,10 @@ function errorCode (code) {
     case '3':
       console.info('job not existing');
       popupDialog.show(function (dom) {
-        dom.querySelector('.popup_content').innerHTML = 'Some error occurred';
+        dom.querySelector('.popup_content').innerHTML = 'Some error occurred, please back to home page & try again';
+        setTimeout(function () {
+          location.href = '/';
+        }, 3000);
       });
       break;
     case 100:
