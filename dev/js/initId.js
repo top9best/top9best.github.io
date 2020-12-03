@@ -140,6 +140,11 @@ function initId () {
 
     document.querySelector('#download').addEventListener('click', function (e) {
       e.preventDefault();
+      gtag('event', 'download', {
+        'event_category': 'download',
+        'event_label': id,
+        'value': 1
+      });
       loading(true);
       var grid = document.querySelector("#grid_section");
       var size = 1280;
