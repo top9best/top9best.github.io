@@ -61,7 +61,8 @@ function initId () {
     var postList = source.post_list;
     var totalLikedCount = source.total_liked_count;
     var totalPostCount = source.total_post_count;
-    var title = (postList.length > 8) ? 'Congratulation 🎉' : 'Ooops! Your posts are a bit less';
+    var title = id + ' Top9 in 2020';
+    var subTitle = (postList.length > 8) ? 'Congratulation 🎉' : 'Ooops! Your posts are a bit less';
 
     var imgUrl = {
       'iconLine': '/images/icon_line_32.png',
@@ -91,6 +92,7 @@ function initId () {
     }
 
     content.innerHTML = '<h2>' + title + '</h2>' +
+      '<h3>' + subTitle + '</h3>' +
       '<article>You get ' + thousandth(totalLikedCount) + ' ❤️ & ' + thousandth(totalPostCount) + ' 📸 in 2020!</article>' +
       '<section id="grid_section" class="pure-g"></section>' +
       '<section id="content_download" class="pure-g">' +
