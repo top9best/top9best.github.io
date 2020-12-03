@@ -61,7 +61,7 @@ function initId () {
     var postList = source.post_list;
     var totalLikedCount = source.total_liked_count;
     var totalPostCount = source.total_post_count;
-    var title = '<a href="https://instagram.com/' + id + '/" target="_blank">' + id + '</a> Top9 in 2020';
+    var title = '<a class="btn-primary" href="https://instagram.com/' + id + '/" target="_blank">' + id + '</a> Top9 in 2020';
     var subTitle = (postList.length > 8) ? 'Congratulation 🎉' : 'Ooops! Your posts are a bit less';
 
     var imgUrl = {

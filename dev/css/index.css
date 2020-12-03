@@ -78,7 +78,7 @@ h2 {
   font-weight: bolder;
 }
 
-h2 * {
+header h2 * {
   vertical-align: middle;
   display: inline-block;
 }
