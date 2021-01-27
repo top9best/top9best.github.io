@@ -1,9 +1,9 @@
 function initIndex () {
-  var igEmbed = document.createElement('script');
-  igEmbed.src = 'https://www.instagram.com/embed.js';
-  igEmbed.setAttribute('async', '');
-  document.querySelector('head').appendChild(igEmbed);
-  var userPost = '';
+  // var igEmbed = document.createElement('script');
+  // igEmbed.src = 'https://www.instagram.com/embed.js';
+  // igEmbed.setAttribute('async', '');
+  // document.querySelector('head').appendChild(igEmbed);
+  // var userPost = '';
 
   content.classList.add('index');
   content.innerHTML = '<article>You can input your Instagram id to check most liked top 9 post in 2020!</article>' +
@@ -17,8 +17,8 @@ function initIndex () {
     '<button class="btn-primary">CONTINUE</button>' +
     '</div>' +
     '</form>' +
-    '<h2>User posted in Instagram</h2>' +
-    '<section id="user_post">' + userPost + '</section>' +
+    // '<h2>User posted in Instagram</h2>' +
+    // '<section id="user_post">' + userPost + '</section>' +
     '</section>';
   submitCrawler();
 
